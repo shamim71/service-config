@@ -65,9 +65,9 @@ spring:
 # Note that the "/user" endpoint needs to provide the principle of the logged in user (/me endpoint)
 security:
     oauth2:
-    resource: 
-        userInfoUri: http://${authserver.hostname}:${authserver.port}/${authserver.contextPath}/me
-        preferTokenInfo: false    
+        resource: 
+            userInfoUri: http://${authserver.hostname}:${authserver.port}/${authserver.contextPath}/me
+            preferTokenInfo: false    
       
 ---
 # Auth-server instance when used on Docker
