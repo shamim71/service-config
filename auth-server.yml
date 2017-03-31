@@ -9,9 +9,9 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
 
-security:
-  user:
-    password: password      
+#security:
+#  user:
+#    password: password      
 
 # Datasource and JPA configuration to be used for storing the OAuth authorization details 
 # and token store
@@ -26,7 +26,7 @@ spring:
     database-platform: org.hibernate.dialect.MySQLDialect
     show-sql: false
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
 
 ---
 
