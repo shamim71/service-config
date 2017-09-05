@@ -32,20 +32,21 @@ eureka:
 
 # Remaining properties are used by the OAuth2 SSO to determine where the authorization server is and
 # what client crendentials to use to access that server.
-spring:
+security:
+  basic:
+    enabled: false
   oauth2:
-    sso:
-      home:
-        secure: false
-        path: /,/**/*.html
     client:
-      accessTokenUri: http://${authserver.hostname}:${authserver.port}/${authserver.contextPath}/oauth/token
-      userAuthorizationUri: http://${authserver.hostname}:${authserver.port}/${authserver.contextPath}/oauth/authorize
-      clientId: sampleClientId
+      clientId: SampleClientId
       clientSecret: secret
+      accessTokenUri: http://localhost:8899/userauth/oauth/token
+      userAuthorizationUri: http://localhost:8899/userauth/oauth/authorize
     resource:
-      userInfoUri: http://${authserver.hostname}:${authserver.port}/${authserver.contextPath}/user
-       
+      userInfoUri: http://localhost:8899/userauth/user
+spring:
+  thymeleaf:
+    cache: false
+
 # The userInfoUri is used to authenticate the user so that SSO token can be relayed forward. It needs to either be
 # a physical endpoint (defined using userInfoUri) OR can be bypassed if you use a JSON web token (JWT) that stores
 # information about grants and authentication in the token itself.
@@ -66,13 +67,7 @@ eureka:
     serviceUrl:
       defaultZone: http://192.168.59.103:8761/eureka/
       
-      
-# The OAuth2 server definition that would be used to send the authorization requests to
-authserver:
-    hostname: 192.168.59.103
-    port: 8899
-    contextPath: userauth
-    
+   
 # Define the port where the API gateway server would be running. This could always be port 8080
 # since each docker container has it's own IP
 server:
