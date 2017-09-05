@@ -6,16 +6,6 @@ authserver:
   hostname: localhost
   port: 8899
   contextPath: userauth
-  
-zuul:
-  routes:
-    user-webservice: /api/user/**
-    task-webservice: /api/task/**
-    web-portal: /**
-    user: 
-      path: /api/loggedinuser/**
-      stripPrefix: true
-      url: http://${authserver.hostname}:${authserver.port}/${authserver.contextPath}
       
       
 # Define the Eureka server that handles service registration
@@ -52,21 +42,7 @@ spring:
 # information about grants and authentication in the token itself.
 
 # Note that the "/user" endpoint needs to provide the principle of the logged in user (/me endpoint)
-
-      
----
-# Auth-server instance when used on Docker
-spring:
-  profiles: docker
-eureka:
-# Register our microservices to Eureka using hostnames in a Docker environment will not work, they will all get 
-# one and the same hostname. Instead we configure them to use its IP address during registration with Eureka.
-  instance:
-    preferIpAddress: true
-  client:
-    serviceUrl:
-      defaultZone: http://192.168.59.103:8761/eureka/
-      
+     
    
 # Define the port where the API gateway server would be running. This could always be port 8080
 # since each docker container has it's own IP
