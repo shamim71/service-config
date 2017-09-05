@@ -27,7 +27,7 @@ security:
     enabled: false
   oauth2:
     client:
-      clientId: SampleClientId
+      clientId: barClientIdPassword
       clientSecret: secret
       accessTokenUri: http://localhost:8899/userauth/oauth/token
       userAuthorizationUri: http://localhost:8899/userauth/oauth/authorize
